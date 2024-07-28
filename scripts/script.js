@@ -31,7 +31,7 @@ class Alumno{
     }
 }
 while(opcion!=5 && intentos<3){
-    opcion = parseFloat(prompt("Bienvenido. Ingrese el número 1 (uno), si quiere cargar un nuevo alumno. Ingrese el número 2 (dos), para salir del programa."))
+    opcion = parseFloat(prompt("Bienvenido. Ingrese: 1 para cargar alumnos nuevos al listado. 2 para buscar un alumno por apellido. 3 para ver alumnos aprobados. 4 para ver alumnos desaprobados. 5 para salir del programa."))
     switch (opcion) {
         case 1:
             //Cargar alumnos nuevos
@@ -61,9 +61,11 @@ while(opcion!=5 && intentos<3){
             console.log(alumnosDesaprobados)
             break
         case 5:
+            //Salir del programa
             alert("El programa se cerrará.")
             break
         default:
+            //Opción incorrecta
             alert("Opción inválida.")
             intentos++
             break
@@ -72,6 +74,8 @@ while(opcion!=5 && intentos<3){
 if (intentos==3) {
     alert("Ingresó demasiadas veces una opción incorrecta. El programa se cerrará.")
 }
+
+
 /* 
 ERRORES/OPTIMIZACIONES
 verificar que las notas sean entre 0 y 10 incluios.
