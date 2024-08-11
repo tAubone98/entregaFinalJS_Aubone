@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Sistema de carga de alumnos</title>
 </head>
 <body>
+    <h1>Sistema de Carga de Notas</h1>
+    <div class="cargaAlumno">
+        <h2>Cargar nuevo alumno</h2>
+        <div class="cargaAlumno_info">
+            <ul class="info">
+                <li>
+                    <h3>Apellido: </h3>
+                    <input id="apellido" placeholder="Ingrese un apellido">
+                </li>
+                <li>
+                    <h3>Nombre: </h3>
+                    <input id="nombre" placeholder="Ingrese un nombre">
+                </li>
+                <li>
+                    <h3>1° Nota: </h3>
+                    <input id="nota1" placeholder="Ingrese la 1° nota">
+                </li>
+                <li>
+                    <h3>2° Nota: </h3>
+                    <input id="nota2" placeholder="Ingrese la 2° nota">
+                </li>
+                <li>
+                    <h3>3° Nota: </h3>
+                    <input id="nota3" placeholder="Ingrese la 3° nota">
+                </li>
+                <li>
+                    <button id="cargarAlumno">CARGAR</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="listaAlumnos">
+        <h2>Alumnos Cargados</h2>
+    </div>
     <script src="./scripts/script.js"></script>
 </body>
 </html>

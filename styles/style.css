@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin-left: 2%;
+}
+.cargaAlumno_info{
+    height: 3.75rem;
+    padding: 1%;
+    border: .1875rem dotted cadetblue;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
