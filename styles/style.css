@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    margin-left: 2%;
+    margin: 0 2%;
 }
 .cargaAlumno_info{
     height: 3.75rem;
@@ -14,4 +14,13 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+#tablaAlumnos{
+    height: 3.75rem;
+    width: 100%;
+    padding: 1%;
+    border: .1875rem dotted cadetblue;
+}
+td{
+    text-align: center;
 }

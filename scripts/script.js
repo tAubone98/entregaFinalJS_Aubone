@@ -1,87 +1,73 @@
-// let opcion=0
-// let intentos=0
-// let nombre, apellido, nota1, nota2, nota3
-// let alumnos=[]
-// function solicitarDatosAlumno(){
-//     nombre=prompt("Ingrese el nombre del alumno: ")
-//     apellido=prompt("Ingrese el apellido del alumno: ")
-//     nota1=prompt("Ingrese la primer nota: ")
-//     nota2=prompt("Ingrese la segunda nota: ")
-//     nota3=prompt("Ingrese la tercer nota: ")
-// }
-// class Alumno{
-//     constructor(nombre, apellido, nota1, nota2, nota3){
-//         this.nombre = nombre
-//         this.apellido = apellido
-//         this.nota1 = parseFloat(nota1)
-//         this.nota2 = parseFloat(nota2)
-//         this.nota3 = parseFloat(nota3)
-//         this.promedio = 0
-//         this.aprobado = false
-//     }
-//     calcularPromedio(){
-//         this.promedio = (this.nota1+this.nota2+this.nota3)/3
-//     }
-//     alumnoAprobado(){
-//         if (this.promedio>=7){
-//             this.aprobado=true
-//         }else{
-//             this.aprobado=false
-//         }
-//     }
-// }
-// while(opcion!=5 && intentos<3){
-//     opcion = parseFloat(prompt("Bienvenido. Ingrese: 1 para cargar alumnos nuevos al listado. 2 para buscar un alumno por apellido. 3 para ver alumnos aprobados. 4 para ver alumnos desaprobados. 5 para salir del programa."))
-//     switch (opcion) {
-//         case 1:
-//             //Cargar alumnos nuevos
-//             let terminarCarga = prompt("Ingrese la cantidad de alumnos que desea cargar: ")
-//             for (let i=0; i<terminarCarga; i++){
-//                 solicitarDatosAlumno()
-//                 let alumnoNuevo= new Alumno(nombre,apellido,nota1,nota2,nota3)
-//                 alumnos.push(alumnoNuevo)
-//                 alumnos[i].calcularPromedio()
-//                 alumnos[i].alumnoAprobado()
-//             }
-//             break
-//         case 2:
-//             //Buscar alumno por apellido
-//             let apellidoAlumno=prompt("Ingrese el apellido del alumno que desea buscar: ").toLowerCase()
-//             let alumnoBuscado=alumnos.find(alumno=>alumno.apellido.toLowerCase() === apellidoAlumno)
-//             console.log(alumnoBuscado)
-//             break
-//         case 3:
-//             //Mostrar alumnos aprobados
-//             let alumnosAprobados=alumnos.filter((alumno)=> alumno.aprobado ===true)
-//             console.log(alumnosAprobados)
-//             break
-//         case 4:
-//             //Mostrar alumnos desaprobados
-//             let alumnosDesaprobados=alumnos.filter((alumno)=> alumno.aprobado ===false)
-//             console.log(alumnosDesaprobados)
-//             break
-//         case 5:
-//             //Salir del programa
-//             alert("El programa se cerrará.")
-//             break
-//         default:
-//             //Opción incorrecta
-//             alert("Opción inválida.")
-//             intentos++
-//             break
-//     }
-// }
-// if (intentos==3) {
-//     alert("Ingresó demasiadas veces una opción incorrecta. El programa se cerrará.")
-// }
+let cApellido,cNombre,cNota1,cNota2,cNota3
+let aApellido=[], aNombre=[], aNota1=[], aNota2=[], aNota3=[]
+if (localStorage.getItem('apellido_Alumnos') != null) {
+    aApellido = JSON.parse(localStorage.getItem('apellido_Alumnos'))
+    aNombre = JSON.parse(localStorage.getItem('nombre_Alumnos'))
+    aNota1 = JSON.parse(localStorage.getItem('nota1_Alumnos'))
+    aNota2 = JSON.parse(localStorage.getItem('nota2_Alumnos'))
+    aNota3 = JSON.parse(localStorage.getItem('nota3_Alumnos'))
+}
 
-/* 
-ERRORES/OPTIMIZACIONES
-verificar que las notas sean entre 0 y 10 incluios.
-verificar que no se ingrese nada más que números en las notas.
-verificar que no se ingrese nada más que letras en nombre y apellido.
-agregar divisiones de cursos
-verificar que el alumno buscado esté
-*/
+let btnCargaAlumno = document.getElementById("cargarAlumno")
+btnCargaAlumno.addEventListener('click', guardarDatosAlumnos)
 
-//CREAR FICHA DE ALUMNO CAPTURANDO LO INGRESADO EN INPUTS POR EL USUARIO
+function guardarDatosAlumnos(){
+    cApellido = document.getElementById("apellido").value,
+    cNombre = document.getElementById("nombre").value,
+    cNota1 = document.getElementById("nota1").value,
+    cNota2 = document.getElementById("nota2").value,
+    cNota3 = document.getElementById("nota3").value
+
+    aApellido.push(cApellido)
+    aNombre.push(cNombre)
+    aNota1.push(cNota1)
+    aNota2.push(cNota2)
+    aNota3.push(cNota3)
+
+    localStorage.setItem('apellido_Alumnos',JSON.stringify(aApellido))
+    localStorage.setItem('nombre_Alumnos',JSON.stringify(aNombre))
+    localStorage.setItem('nota1_Alumnos',JSON.stringify(aNota1))
+    localStorage.setItem('nota2_Alumnos',JSON.stringify(aNota2))
+    localStorage.setItem('nota3_Alumnos',JSON.stringify(aNota3))
+}
+
+cargarTabla()
+
+function cargarTabla(){
+    let tbody = document.querySelector('#tablaAlumnos tbody')
+    tbody.innerHTML=''
+    
+    let nCantidadAlumnos = aApellido.length
+
+    for (let i = 0; i < nCantidadAlumnos; i++) {
+        let fila=document.createElement('tr')
+
+        let colApellido=document.createElement('td'),
+            colNombre=document.createElement('td'),
+            colNota1=document.createElement('td'),
+            colNota2=document.createElement('td'),
+            colNota3=document.createElement('td')
+        
+        let nodoTApellido=document.createTextNode(aApellido[i]),
+            nodoTNombre=document.createTextNode(aNombre[i]),
+            nodoTNota1=document.createTextNode(aNota1[i]),
+            nodoTNota2=document.createTextNode(aNota2[i]),
+            nodoTNota3=document.createTextNode(aNota3[i])
+        
+        colApellido.appendChild(nodoTApellido)
+        colNombre.appendChild(nodoTNombre)
+        colNota1.appendChild(nodoTNota1)
+        colNota2.appendChild(nodoTNota2)
+        colNota3.appendChild(nodoTNota3)
+
+        fila.appendChild(colApellido)
+        fila.appendChild(colNombre)
+        fila.appendChild(colNota1)
+        fila.appendChild(colNota2)
+        fila.appendChild(colNota3)
+
+        tbody.appendChild(fila)
+    }
+}
+
+//UTILIZAR UNICAMENTE UN ARRAY DE OBJETOS "ALUMNO" PARA LA ENTREGA FINAL

@@ -10,38 +10,53 @@
     <h1>Sistema de Carga de Notas</h1>
     <div class="cargaAlumno">
         <h2>Cargar nuevo alumno</h2>
-        <div class="cargaAlumno_info">
-            <ul class="info">
-                <li>
-                    <h3>Apellido: </h3>
-                    <input id="apellido" placeholder="Ingrese un apellido">
-                </li>
-                <li>
-                    <h3>Nombre: </h3>
-                    <input id="nombre" placeholder="Ingrese un nombre">
-                </li>
-                <li>
-                    <h3>1° Nota: </h3>
-                    <input id="nota1" placeholder="Ingrese la 1° nota">
-                </li>
-                <li>
-                    <h3>2° Nota: </h3>
-                    <input id="nota2" placeholder="Ingrese la 2° nota">
-                </li>
-                <li>
-                    <h3>3° Nota: </h3>
-                    <input id="nota3" placeholder="Ingrese la 3° nota">
-                </li>
-                <li>
-                    <button id="cargarAlumno">CARGAR</button>
-                </li>
-            </ul>
-        </div>
+        <form id="formularioAlumnos">
+            <div class="cargaAlumno_info">
+                <ul class="info">
+                    <li>
+                        <h3>Apellido: </h3>
+                        <input type="text" id="apellido" placeholder="Ingrese un apellido">
+                    </li>
+                    <li>
+                        <h3>Nombre: </h3>
+                        <input type="text" id="nombre" placeholder="Ingrese un nombre">
+                    </li>
+                    <li>
+                        <h3>1° Nota: </h3>
+                        <input type="number" id="nota1" placeholder="Ingrese la 1° nota">
+                    </li>
+                    <li>
+                        <h3>2° Nota: </h3>
+                        <input type="number" id="nota2" placeholder="Ingrese la 2° nota">
+                    </li>
+                    <li>
+                        <h3>3° Nota: </h3>
+                        <input type="number" id="nota3" placeholder="Ingrese la 3° nota">
+                    </li>
+                    <li>
+                        <button type="submit" id="cargarAlumno">CARGAR</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        
     </div>
     <br>
-    <div class="listaAlumnos">
-        <h2>Alumnos Cargados</h2>
-    </div>
+    <h2>Alumnos Cargados</h2>
+    <table id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>1° Nota</th>
+                <th>2° Nota</th>
+                <th>3° Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
